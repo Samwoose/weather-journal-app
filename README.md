@@ -1,10 +1,34 @@
-# Weather-Journal App Project
+# Landing Page Project
+This project is to implement the functionalities such as click event, and scroll event listeners in Javascript. 
+Also, it builds nav bar dynamically based on the sections I have on the website. 
 
-## Overview
-This project requires you to create an asynchronous web app that uses Web API and user data to dynamically update the UI. 
+## Installation
+Code editor to work with html, javascript and css. 
+I have been using Visual Studio Code for this project. 
 
-## Instructions
-This will require modifying the `server.js` file and the `website/app.js` file. You can see `index.html` for element references, and once you are finished with the project steps, you can use `style.css` to style your application to customized perfection.
+## Directory structure
+css
+- styles.css    
+index.html
+js
+- app.js
+README.md
 
-## Extras
-If you are interested in testing your code as you go, you can use `tests.js` as a template for writing and running some basic tests for your code.
+## How to check out the website
+Please keep the structure of the directories and drag the index.html file to your favorite browser such as Chrome.
+
+## Details on each part
+-Build Navbar : Get ids of all sections and build a navbar based on them.
+
+-Detection Algorithm: Detect a section that is located on the top in the current viewport.
+
+-Scroll Event Listener: Listen to the scroll event and see if there is any detected section and if so display a special visual effect(circle(s) is(are) hovering on the background)
+
+-Click Event Listener: Listen to the click event and whenever you click one of the sections located in Navbar, it will show the corresponding section you just clicked. 
+
+## Future work
+-Some styles can be added. 
+-Realistic contents can be added instead of just placeholders. 
+
+## Licence
+Udacity
