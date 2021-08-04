@@ -40,10 +40,12 @@ app.get("/data",(req,res)=>{
 
 //Add a POST route that adds incoming data to projectData Object
 app.post("/addFeeling",(req,res)=>{
+    //create a new entry for an object
     const newEntry = {
         temperature : req.body.temperature,
         date : req.body.date,
         userResponse : req.body.userResponse,
     }
+    //push the new entry to the object
     projectData.push(newEntry);
 });
