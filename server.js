@@ -37,3 +37,13 @@ app.get("/data",(req,res)=>{
     //returns the projectData object to client when GET request is made
     res.send(projectData);
 });
+
+//Add a POST route that adds incoming data to projectData Object
+app.post("/addFeeling",(req,res)=>{
+    const newEntry = {
+        temperature : req.body.temperature,
+        date : req.body.date,
+        userResponse : req.body.userResponse,
+    }
+    projectData.push(newEntry);
+});
