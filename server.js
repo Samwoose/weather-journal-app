@@ -31,3 +31,9 @@ function callback(){
     console.log('server running');
     console.log(`runnig on localhost: ${port}`);
 }
+
+//Add a GET route that returns the projectData object. 
+app.get("/data",(req,res)=>{
+    //returns the projectData object to client when GET request is made
+    res.send(projectData);
+});
