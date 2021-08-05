@@ -1,7 +1,7 @@
 /* Global Variables */
 const baseURL = 'https://api.openweathermap.org/data/2.5/weather?zip=';
 const countryCode = ',us'; //As of now, a user only can get the weather data in us
-const apiKey = '&appid=84ff473286e612faa285c0e093aab1ea';
+const apiKey = ''; //Deleted on purpose. You need to get your personal OpenWeatherMap API key and set the variable value to it.
 const absoluteTemp = 273.15 //It will be used to convert temperature in Kevin to Celsius
 
 // Create a new date instance dynamically with JS
