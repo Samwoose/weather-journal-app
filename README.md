@@ -1,4 +1,4 @@
-# Landing Page Project
+# Weather Journal App Project
 This project is to implement the functionalities that get weather information from the
 OpenWeatherMap API and store some information to our server(server.js) then get & print out it
 with user's feeling 
