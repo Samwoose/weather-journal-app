@@ -24,6 +24,22 @@ const zipCodeChecker = (zipCode) =>{
     }
 }
 
+/**
+ * check if user feeling is provided and return true if it has been provided.
+ * -invalid case1: user feeling is not provided
+ * @param {string} userFeeling userFeeling entered by user on the browser when user clicked Generate button.
+ * @return {boolean} true/false 
+ */
+ const userFeelingChecker = (userFeeling) =>{
+    if(userFeeling === ""){
+        window.alert('Please, let me know your feeling today');
+        return false
+    }
+    else{
+        return true
+    }
+}
+
 
 
 
@@ -115,21 +131,23 @@ function getNPostWeatherNUpdateUI(e){
     const zipCode = document.querySelector('#zip').value ;
     if(zipCodeChecker(zipCode)){
         const userFeeling = document.querySelector('#feelings').value ;
-        //debug
-        console.log(`zip code: ${zipCode}`);
-        console.log(`feeling: ${userFeeling}`);
+        if(userFeelingChecker(userFeeling)){
+            //debug
+            console.log(`zip code: ${zipCode}`);
+            console.log(`feeling: ${userFeeling}`);
 
 
-        //get weather data then post it 
-        getWeather(baseURL, countryCode, apiKey, zipCode)
-        .then(function(weatherData){
-            console.log(weatherData.main.temp);
-            //post(store) weather data into our server
-            postWeather('/addFeeling',weatherData,userFeeling,newDate);
-            //get stored data in our server and update UI
-            getTempDateFeelingDataNUdateUI('/data');
-        })
+            //get weather data then post it 
+            getWeather(baseURL, countryCode, apiKey, zipCode)
+            .then(function(weatherData){
+                console.log(weatherData.main.temp);
+                //post(store) weather data into our server
+                postWeather('/addFeeling',weatherData,userFeeling,newDate);
+                //get stored data in our server and update UI
+                getTempDateFeelingDataNUdateUI('/data');
+            })
+        }
 
     }
-       
+
 }
