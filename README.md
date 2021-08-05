@@ -41,61 +41,49 @@ e.g. zip code : 90007
  * @return {boolean} true/false 
 
 
-
-
-/**
+-userFeelingChecker(userFeeling)
  * check if user feeling is provided and return true if it has been provided.
  * -invalid case1: user feeling is not provided
  * @param {string} userFeeling userFeeling entered by user on the browser when user clicked Generate button.
  * @return {boolean} true/false 
- */
- userFeelingChecker(userFeeling)
 
-/**
+-getWeather(baseURL, countryCode, apiKey, zipCode)
  * async GET request function from external API(OpenWeatherMap)
- *
  * @param {string} baseURL Base url to the OpenWeatherMap API.
  * @param {string} countryCode Country code of interest.
  * @param {string} apiKey Personal API key of OpenWeatherMap API.
  * @param {string} zipCode zip code entered by user on the browser.
  * @return {json} weatherData json of weather data from OpenWeather API
- */
-getWeather(baseURL, countryCode, apiKey, zipCode)
 
-
-/**
+-postWeather(url,weatherData,userResponse,date)
  * async POST request function.
  * It updates pojectData object in server side(which is run by server.js)
- *
+ 
  * @param {string} url endpoint that will trigger post request and save the data in server.
  * @param {Promise} weatherData Promise type and current weather data from OpenWeather API.
  * @param {string} userResponse User's feeling. It comes from users input on Web journal browser
  * @param {string} date current data
  * @return {json} newlyFormedData newly formed weather, date, and user response data in JSON
- */
-postWeather(url,weatherData,userResponse,date)
 
-/**
+-getTempDateFeelingDataNUdateUI ()
  * async GET request function from our server (server.js)
  * and get projectData from our server
  * @param {string} url url to our server to get the projectData.
  * @return {none} none
- */
-getTempDateFeelingDataNUdateUI ()
 
-/**
+
+-getNPostWeatherNUpdateUI(e)
  * Make GET and POST requests to our server and update UI
  * @param {Object} e event object.
  * @return {none} none
- */
-getNPostWeatherNUpdateUI(e)
+
 
 ## Important routes in server.js
-//Add a GET route that returns the projectData object. 
-app.get("/data",(req,res)
+-app.get("/data",(req,res) 
+ * Add a GET route that returns the projectData object. 
 
-//Add a POST route that adds incoming data to projectData Object
-app.post("/addFeeling",(req,res)
+-app.post("/addFeeling",(req,res)
+ * Add a POST route that adds incoming data to projectData Object
 
 ## Future work
 -Check if the provided zip code is valid. 
