@@ -33,14 +33,14 @@ e.g. zip code : 90007
 -Click Generate button. 
 
 ## Important functions in app.js
-/**
+-const zipCodeChecker = (zipCode)
  * check if zip code is provided and return true if the zip code is valid
  * -invalid case1: zip code is not provided
  * -invalid case2: provided zip code is not valid in U.S.
  * @param {string} zipCode zip code entered by user on the browser.
  * @return {boolean} true/false 
- */
-const zipCodeChecker = (zipCode)
+
+
 
 
 /**
