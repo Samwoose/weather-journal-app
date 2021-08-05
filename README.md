@@ -4,33 +4,33 @@ OpenWeatherMap API and store some information to our server(server.js) then get 
 with user's feeling 
 
 ## Installation
--Node
--express
--body-parser
--cors
+- Node
+- express
+- body-parser
+- cors
 (Node packages can be installed with npm install 'name of package')
 
 ## Directory structure
 website
--image
---background_image.png
--app.js
--index.html
--style.css
+- image
+-- background_image.png
+- app.js
+- index.html
+- style.css
 README.md
 server.js
 
 ## How to check out the website
--Get your personal OpenWeatherMap API key by signing up the web service at http://openweathermap.com/
--Set varible 'apiKey' to your API key in app.js 
--Open the terminal and navigate your working directory to the directory where the server.js is located.
--Run the server with command:
+- Get your personal OpenWeatherMap API key by signing up the web service at http://openweathermap.com/
+- Set varible 'apiKey' to your API key in app.js 
+- Open the terminal and navigate your working directory to the directory where the server.js is located.
+- Run the server with command:
 node server.js
--Open your browser(e.g. Chrome) and type http://localhost:3000/
--Enter zip code and your current feeling.
+- Open your browser(e.g. Chrome) and type http://localhost:3000/
+- Enter zip code and your current feeling.
 e.g. zip code : 90007 
      How are you feeling today: I am happy!
--Click Generate button. 
+- Click Generate button. 
 
 ## Important functions in app.js
 -const zipCodeChecker = (zipCode)
@@ -86,8 +86,8 @@ e.g. zip code : 90007
  * Add a POST route that adds incoming data to projectData Object
 
 ## Future work
--Check if the provided zip code is valid. 
--Customize UI more visually pleasantly 
+- Check if the provided zip code is valid. 
+- Customize UI more visually pleasantly 
 
 ## Licence
 Udacity
