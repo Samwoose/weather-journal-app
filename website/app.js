@@ -5,7 +5,7 @@ const apiKey = '&appid=84ff473286e612faa285c0e093aab1ea';
 const absoluteTemp = 273.15 //It will be used to convert temperature in Kevin to Celsius
 // Create a new date instance dynamically with JS
 let d = new Date();
-let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
+let newDate = (d.getMonth()+1)+'.'+ d.getDate()+'.'+ d.getFullYear();
 
 /**
  * check if zip code is provided and return true if the zip code is valid
@@ -115,9 +115,9 @@ const getTempDateFeelingDataNUdateUI = async (url='')=>{
         //Transform into JSON
         const tempDateFeelingData = await request.json();
         //Choose last item of json and update UI element accordingly
-        document.querySelector('#date').innerHTML = tempDateFeelingData[tempDateFeelingData.length-1].date;
-        document.querySelector('#temp').innerHTML = tempDateFeelingData[tempDateFeelingData.length-1].temperature;
-        document.querySelector('#content').innerHTML = tempDateFeelingData[tempDateFeelingData.length-1].userResponse;
+        document.querySelector('#date').innerHTML = "Date: " + tempDateFeelingData[tempDateFeelingData.length-1].date;
+        document.querySelector('#temp').innerHTML = "Temperature: " + tempDateFeelingData[tempDateFeelingData.length-1].temperature;
+        document.querySelector('#content').innerHTML = "Your feeling: " + tempDateFeelingData[tempDateFeelingData.length-1].userResponse;
         
     }catch(error){
         console.log('For some Reason, could not fishish GET request for temp, date, feeling data', error);
