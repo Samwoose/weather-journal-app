@@ -7,6 +7,24 @@ const apiKey = '&appid=84ff473286e612faa285c0e093aab1ea';
 let d = new Date();
 let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
 
+/**
+ * check if zip code is provided and return true if the zip code is valid
+ * -invalid case1: zip code is not provided
+ * -invalid case2: provided zip code is not valid in U.S.
+ * @param {string} zipCode zip code entered by user on the browser.
+ * @return {boolean} true/false 
+ */
+const zipCodeChecker = (zipCode) =>{
+    if(zipCode === ""){
+        window.alert('Please, provide zip code');
+        return false
+    }
+    else{
+        return true
+    }
+}
+
+
 
 
 /**
@@ -80,6 +98,7 @@ const getTempDateFeelingDataNUdateUI = async (url='')=>{
     try{
         //Transform into JSON
         const tempDateFeelingData = await request.json();
+        //Choose last item of json and update UI element accordingly
         document.querySelector('#date').innerHTML = tempDateFeelingData[tempDateFeelingData.length-1].date;
         document.querySelector('#temp').innerHTML = tempDateFeelingData[tempDateFeelingData.length-1].temperature;
         document.querySelector('#content').innerHTML = tempDateFeelingData[tempDateFeelingData.length-1].userResponse;
@@ -90,23 +109,27 @@ const getTempDateFeelingDataNUdateUI = async (url='')=>{
 };
 
 //Add click event listener.
-document.querySelector('#generate').addEventListener('click', getNPostWeather);
+document.querySelector('#generate').addEventListener('click', getNPostWeatherNUpdateUI);
 
-function getNPostWeather(e){
+function getNPostWeatherNUpdateUI(e){
     const zipCode = document.querySelector('#zip').value ;
-    const userFeeling = document.querySelector('#feelings').value ;
-    //debug
-    console.log(`zip code: ${zipCode}`);
-    console.log(`feeling: ${userFeeling}`);
+    if(zipCodeChecker(zipCode)){
+        const userFeeling = document.querySelector('#feelings').value ;
+        //debug
+        console.log(`zip code: ${zipCode}`);
+        console.log(`feeling: ${userFeeling}`);
 
 
-    //get weather data then post it 
-    getWeather(baseURL, countryCode, apiKey, zipCode)
-    .then(function(weatherData){
-        console.log(weatherData.main.temp);
-        //post(store) weather data into our server
-        postWeather('/addFeeling',weatherData,userFeeling,newDate);
-        //get stored data in our server and update UI
-        getTempDateFeelingDataNUdateUI('/data');
-    })
+        //get weather data then post it 
+        getWeather(baseURL, countryCode, apiKey, zipCode)
+        .then(function(weatherData){
+            console.log(weatherData.main.temp);
+            //post(store) weather data into our server
+            postWeather('/addFeeling',weatherData,userFeeling,newDate);
+            //get stored data in our server and update UI
+            getTempDateFeelingDataNUdateUI('/data');
+        })
+
+    }
+       
 }
