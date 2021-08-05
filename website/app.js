@@ -3,9 +3,11 @@ const baseURL = 'https://api.openweathermap.org/data/2.5/weather?zip=';
 const countryCode = ',us'; //As of now, a user only can get the weather data in us
 const apiKey = '&appid=84ff473286e612faa285c0e093aab1ea';
 const absoluteTemp = 273.15 //It will be used to convert temperature in Kevin to Celsius
+
 // Create a new date instance dynamically with JS
 let d = new Date();
 let newDate = (d.getMonth()+1)+'.'+ d.getDate()+'.'+ d.getFullYear();
+
 
 /**
  * check if zip code is provided and return true if the zip code is valid
@@ -24,6 +26,7 @@ const zipCodeChecker = (zipCode) =>{
     }
 }
 
+
 /**
  * check if user feeling is provided and return true if it has been provided.
  * -invalid case1: user feeling is not provided
@@ -41,8 +44,6 @@ const zipCodeChecker = (zipCode) =>{
 }
 
 
-
-
 /**
  * async GET request function from external API(OpenWeatherMap)
  *
@@ -54,22 +55,20 @@ const zipCodeChecker = (zipCode) =>{
  */
 const getWeather = async (baseURL, countryCode, apiKey, zipCode) => {
     //get weather data from the OpenWeatherMap API and save it to variable
-    
     const weatherResponse = await fetch (baseURL+zipCode+countryCode+apiKey)
     //if resolved try this.
     try{
-        //conver to json form
+        //convert to json form
         const weatherData = await weatherResponse.json();
-        // Debug purpose
-        //console.log(weatherData);
         console.log(weatherData.main.temp);// This returens temperature in Kelvin. Need to convert to Celsius by subtracting 273.15  
-        //console.log(weatherData.name);
+        
         
         return weatherData
     } catch(error){
         console.log('For some reason, the task could not be finished',error);
     }
 }
+
 
 /**
  * async POST request function.
@@ -127,20 +126,20 @@ const getTempDateFeelingDataNUdateUI = async (url='')=>{
 //Add click event listener.
 document.querySelector('#generate').addEventListener('click', getNPostWeatherNUpdateUI);
 
+
+/**
+ * Make GET and POST requests to our server and update UI
+ * @param {Object} e event object.
+ * @return {none} none
+ */
 function getNPostWeatherNUpdateUI(e){
     const zipCode = document.querySelector('#zip').value ;
     if(zipCodeChecker(zipCode)){
         const userFeeling = document.querySelector('#feelings').value ;
         if(userFeelingChecker(userFeeling)){
-            //debug
-            console.log(`zip code: ${zipCode}`);
-            console.log(`feeling: ${userFeeling}`);
-
-
             //get weather data then post it 
             getWeather(baseURL, countryCode, apiKey, zipCode)
             .then(function(weatherData){
-                console.log(weatherData.main.temp);
                 //post(store) weather data into our server
                 postWeather('/addFeeling',weatherData,userFeeling,newDate);
                 //get stored data in our server and update UI
