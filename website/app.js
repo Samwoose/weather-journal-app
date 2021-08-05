@@ -72,7 +72,6 @@ const zipCode = 90007; // As of now it is a fixed value. It is Los Angeles Zip c
 
 
 //Add click event listener.
-
 document.querySelector('#generate').addEventListener('click', getNPostWeather);
 
 function getNPostWeather(e){
@@ -87,7 +86,6 @@ function getNPostWeather(e){
     getWeather(baseURL, countryCode, apiKey, zipCode)
     .then(function(weatherData){
         console.log(weatherData.main.temp);
-        const userResponse = 'test user purpose' ;//temporary value for now
-        postWeather('/addFeeling',weatherData,userResponse,newDate);
+        postWeather('/addFeeling',weatherData,userFeeling,newDate);
     })
 }
