@@ -67,9 +67,27 @@ const postWeather = async (url,weatherData,userResponse,date) => {
     }
 }
 
-const zipCode = 90007; // As of now it is a fixed value. It is Los Angeles Zip code
-//const zipCode = document.querySelector('#zip').value ; //get zip code from user input
-
+/**
+ * async GET request function from our server (server.js)
+ * and get projectData from our server
+ *
+ * @param {string} url url to our server to get the projectData.
+ * @return {none} none
+ */
+const getTempDateFeelingDataNUdateUI = async (url='')=>{
+    //get projectData object from the server
+    const request = await fetch(url);
+    try{
+        //Transform into JSON
+        const tempDateFeelingData = await request.json();
+        document.querySelector('#date').innerHTML = tempDateFeelingData[tempDateFeelingData.length-1].date;
+        document.querySelector('#temp').innerHTML = tempDateFeelingData[tempDateFeelingData.length-1].temperature;
+        document.querySelector('#content').innerHTML = tempDateFeelingData[tempDateFeelingData.length-1].userResponse;
+        
+    }catch(error){
+        console.log('For some Reason, could not fishish GET request for temp, date, feeling data', error);
+    }
+};
 
 //Add click event listener.
 document.querySelector('#generate').addEventListener('click', getNPostWeather);
@@ -87,5 +105,7 @@ function getNPostWeather(e){
     .then(function(weatherData){
         console.log(weatherData.main.temp);
         postWeather('/addFeeling',weatherData,userFeeling,newDate);
+        //get stored data in our server and update UI
+        getTempDateFeelingDataNUdateUI('/data');
     })
 }
