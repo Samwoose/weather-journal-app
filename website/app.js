@@ -28,7 +28,7 @@ const getWeather = async (baseURL, countryCode, apiKey, zipCode) => {
         const weatherData = await weatherResponse.json();
         // Debug purpose
         //console.log(weatherData);
-        //console.log(weatherData.main.temp);// This returens temperature in Kelvin. Need to convert to Celsius by subtracting 273.15  
+        console.log(weatherData.main.temp);// This returens temperature in Kelvin. Need to convert to Celsius by subtracting 273.15  
         //console.log(weatherData.name);
         
         return weatherData
@@ -41,14 +41,37 @@ const getWeather = async (baseURL, countryCode, apiKey, zipCode) => {
  * async POST request function.
  * It updates pojectData object in server side(which is run by server.js)
  *
- * @param {} b B.
- * @param {} b B.
- * @param {} b B.
- * @param {} b B.
- * @return {number} x raised to the n-th power.
+ * @param {string} url endpoint that will trigger post request and save the data in server.
+ * @param {Promise} weatherData Promise type and current weather data from OpenWeather API.
+ * @param {string} userResponse User's feeling. It comes from users input on Web journal browser
+ * @param {string} date current data
+ * @return {json} newlyFormedData newly formed weather, date, and user response data in JSON
  */
-
+const postWeather = async (url,weatherData,userResponse,date) => {
+    const response = await fetch(url, {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers:{
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            temperature : weatherData.main.temp,
+            date : date,
+            userResponse : userResponse}),
+        });
+    try {
+        const newlyFormedData = await response.json();
+        return newlyFormedData
+    }catch(error){
+        console.log("For some reason, could not finish weather POSt request");
+    }
+}
 
 const zipCode = 90007; // As of now it is a fixed value. It is Los Angeles Zip code
 //const zipCode = document.querySelector('#zip').value ; //get zip code from user input
-getWeather(baseURL, countryCode, apiKey, zipCode);
+getWeather(baseURL, countryCode, apiKey, zipCode)
+.then(function(weatherData){
+    console.log(weatherData.main.temp);
+    const userResponse = 'test user purpose' ;//temporary value for now
+    postWeather('/addFeeling',weatherData,userResponse,newDate);
+})
