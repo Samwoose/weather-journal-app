@@ -16,7 +16,7 @@ let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
  * @param {string} countryCode Country code of interest.
  * @param {string} apiKey Personal API key of OpenWeatherMap API.
  * @param {string} zipCode zip code entered by user on the browser.
- * @return {number} x raised to the n-th power.
+ * @return {json} weatherData json of weather data from OpenWeather API
  */
 const getWeather = async (baseURL, countryCode, apiKey, zipCode) => {
     //get weather data from the OpenWeatherMap API and save it to variable
@@ -36,6 +36,18 @@ const getWeather = async (baseURL, countryCode, apiKey, zipCode) => {
         console.log('For some reason, the task could not be finished',error);
     }
 }
+
+/**
+ * async POST request function.
+ * It updates pojectData object in server side(which is run by server.js)
+ *
+ * @param {} b B.
+ * @param {} b B.
+ * @param {} b B.
+ * @param {} b B.
+ * @return {number} x raised to the n-th power.
+ */
+
 
 const zipCode = 90007; // As of now it is a fixed value. It is Los Angeles Zip code
 //const zipCode = document.querySelector('#zip').value ; //get zip code from user input
