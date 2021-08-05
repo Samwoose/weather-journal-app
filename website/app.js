@@ -60,9 +60,6 @@ const getWeather = async (baseURL, countryCode, apiKey, zipCode) => {
     try{
         //convert to json form
         const weatherData = await weatherResponse.json();
-        console.log(weatherData.main.temp);// This returens temperature in Kelvin. Need to convert to Celsius by subtracting 273.15  
-        
-        
         return weatherData
     } catch(error){
         console.log('For some reason, the task could not be finished',error);
