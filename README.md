@@ -1,34 +1,105 @@
 # Landing Page Project
-This project is to implement the functionalities such as click event, and scroll event listeners in Javascript. 
-Also, it builds nav bar dynamically based on the sections I have on the website. 
+This project is to implement the functionalities that get weather information from the
+OpenWeatherMap API and store some information to our server(server.js) then get & print out it
+with user's feeling 
 
 ## Installation
-Code editor to work with html, javascript and css. 
-I have been using Visual Studio Code for this project. 
+-Node
+-express
+-body-parser
+-cors
+(Node packages can be installed with npm install 'name of package')
 
 ## Directory structure
-css
-- styles.css    
-index.html
-js
-- app.js
+website
+-image
+--background_image.png
+-app.js
+-index.html
+-style.css
 README.md
+server.js
 
 ## How to check out the website
-Please keep the structure of the directories and drag the index.html file to your favorite browser such as Chrome.
+-Get your personal OpenWeatherMap API key by signing up the web service at http://openweathermap.com/
+-Set varible 'apiKey' to your API key in app.js 
+-Open the terminal and navigate your working directory to the directory where the server.js is located.
+-Run the server with command:
+node server.js
+-Open your browser(e.g. Chrome) and type http://localhost:3000/
+-Enter zip code and your current feeling.
+e.g. zip code : 90007 
+     How are you feeling today: I am happy!
+-Click Generate button. 
 
-## Details on each part
--Build Navbar : Get ids of all sections and build a navbar based on them.
+## Important functions in app.js
+/**
+ * check if zip code is provided and return true if the zip code is valid
+ * -invalid case1: zip code is not provided
+ * -invalid case2: provided zip code is not valid in U.S.
+ * @param {string} zipCode zip code entered by user on the browser.
+ * @return {boolean} true/false 
+ */
+const zipCodeChecker = (zipCode)
 
--Detection Algorithm: Detect a section that is located on the top in the current viewport.
 
--Scroll Event Listener: Listen to the scroll event and see if there is any detected section and if so display a special visual effect(circle(s) is(are) hovering on the background)
+/**
+ * check if user feeling is provided and return true if it has been provided.
+ * -invalid case1: user feeling is not provided
+ * @param {string} userFeeling userFeeling entered by user on the browser when user clicked Generate button.
+ * @return {boolean} true/false 
+ */
+ userFeelingChecker(userFeeling)
 
--Click Event Listener: Listen to the click event and whenever you click one of the sections located in Navbar, it will show the corresponding section you just clicked. 
+/**
+ * async GET request function from external API(OpenWeatherMap)
+ *
+ * @param {string} baseURL Base url to the OpenWeatherMap API.
+ * @param {string} countryCode Country code of interest.
+ * @param {string} apiKey Personal API key of OpenWeatherMap API.
+ * @param {string} zipCode zip code entered by user on the browser.
+ * @return {json} weatherData json of weather data from OpenWeather API
+ */
+getWeather(baseURL, countryCode, apiKey, zipCode)
+
+
+/**
+ * async POST request function.
+ * It updates pojectData object in server side(which is run by server.js)
+ *
+ * @param {string} url endpoint that will trigger post request and save the data in server.
+ * @param {Promise} weatherData Promise type and current weather data from OpenWeather API.
+ * @param {string} userResponse User's feeling. It comes from users input on Web journal browser
+ * @param {string} date current data
+ * @return {json} newlyFormedData newly formed weather, date, and user response data in JSON
+ */
+postWeather(url,weatherData,userResponse,date)
+
+/**
+ * async GET request function from our server (server.js)
+ * and get projectData from our server
+ * @param {string} url url to our server to get the projectData.
+ * @return {none} none
+ */
+getTempDateFeelingDataNUdateUI ()
+
+/**
+ * Make GET and POST requests to our server and update UI
+ * @param {Object} e event object.
+ * @return {none} none
+ */
+getNPostWeatherNUpdateUI(e)
+
+## Important routes in server.js
+//Add a GET route that returns the projectData object. 
+app.get("/data",(req,res)
+
+//Add a POST route that adds incoming data to projectData Object
+app.post("/addFeeling",(req,res)
 
 ## Future work
--Some styles can be added. 
--Realistic contents can be added instead of just placeholders. 
+-Check if the provided zip code is valid. 
+-Customize UI more visually pleasantly 
 
 ## Licence
 Udacity
