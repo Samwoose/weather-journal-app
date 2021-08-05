@@ -1,31 +1,49 @@
 body{
     background: #fffff8;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    background-image: url("image/background_image.png");
+    /* position: relative; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
 }
 
+
+
 #app{
-    display: grid;
-    grid-auto-rows: minmax(150px, auto);
+    /* display: flexbox   ; */
+    /* grid-auto-rows: minmax(150px, auto); */
     /* grid-template-columns:  */
-    height:100vh;
-    background: #f23557;
-    color: #f0d43a;
-    justify-content: center;
-    grid-gap: 1em;
+    /* height:100vh; */
+    /* background: #f23557; */
+    /* color: #f0d43a; */
+    /* justify-content: center; */
+    /* left: 50%; */
+    /* grid-gap: 1em; */
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
+    
+    
 }
 
 .holder{
 
 }
 
+
+
 .entry{
     background: rgba(59, 74, 107, .4);
 }
 
 #entryHolder{
+    text-align: center;
+}
 
+#generate{
+    
 }
 
 #date{
@@ -55,8 +73,8 @@ label{
 
 input{
     display:block;
-    height: 60px;
-    width: 320px;
+    /* height: 60px;
+    width: 320px; */
     background:#22b2da;
     color: #f0d43a;
     font-size: 20px;
@@ -65,8 +83,8 @@ input{
 }
 
 button{
-    width: 400px;
-    height: 100px;
+    /* width: 400px; */
+    /* height: 100px; */
     background: #3b4a6b;
     color: #f0d43a;
     font-size: 26px;
