@@ -104,6 +104,7 @@ function getNPostWeather(e){
     getWeather(baseURL, countryCode, apiKey, zipCode)
     .then(function(weatherData){
         console.log(weatherData.main.temp);
+        //post(store) weather data into our server
         postWeather('/addFeeling',weatherData,userFeeling,newDate);
         //get stored data in our server and update UI
         getTempDateFeelingDataNUdateUI('/data');
