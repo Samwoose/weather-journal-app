@@ -69,9 +69,25 @@ const postWeather = async (url,weatherData,userResponse,date) => {
 
 const zipCode = 90007; // As of now it is a fixed value. It is Los Angeles Zip code
 //const zipCode = document.querySelector('#zip').value ; //get zip code from user input
-getWeather(baseURL, countryCode, apiKey, zipCode)
-.then(function(weatherData){
-    console.log(weatherData.main.temp);
-    const userResponse = 'test user purpose' ;//temporary value for now
-    postWeather('/addFeeling',weatherData,userResponse,newDate);
-})
+
+
+//Add click event listener.
+
+document.querySelector('#generate').addEventListener('click', getNPostWeather);
+
+function getNPostWeather(e){
+    const zipCode = document.querySelector('#zip').value ;
+    const userFeeling = document.querySelector('#feelings').value ;
+    //debug
+    console.log(`zip code: ${zipCode}`);
+    console.log(`feeling: ${userFeeling}`);
+
+
+    //get weather data then post it 
+    getWeather(baseURL, countryCode, apiKey, zipCode)
+    .then(function(weatherData){
+        console.log(weatherData.main.temp);
+        const userResponse = 'test user purpose' ;//temporary value for now
+        postWeather('/addFeeling',weatherData,userResponse,newDate);
+    })
+}
