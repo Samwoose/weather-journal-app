@@ -11,14 +11,14 @@ with user's feeling
 (Node packages can be installed with npm install 'name of package')
 
 ## Directory structure
-website
-- image
--- background_image.png
-- app.js
-- index.html
-- style.css
-README.md
-server.js
+website<br/>
+-image<br/>
+--background_image.png<br/>
+-app.js<br/>
+-index.html<br/>
+-style.css<br/>
+README.md<br/>
+server.js<br/>
 
 ## How to check out the website
 - Get your personal OpenWeatherMap API key by signing up the web service at http://openweathermap.com/
