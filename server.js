@@ -1,5 +1,5 @@
 // Setup empty JS object to act as endpoint for all routes
-projectData = [];
+projectData = {};
 
 // Require Express to run server and routes
 const express = require('express');
@@ -47,5 +47,6 @@ app.post("/addFeeling",(req,res)=>{
         userResponse : req.body.userResponse,
     }
     //push the new entry to the object
-    projectData.push(newEntry);
+    //projectData.push(newEntry);
+    projectData = newEntry ;
 });

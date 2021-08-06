@@ -1,7 +1,8 @@
 /* Global Variables */
 const baseURL = 'https://api.openweathermap.org/data/2.5/weather?zip=';
 const countryCode = ',us'; //As of now, a user only can get the weather data in us
-const apiKey = ''; //Deleted on purpose. You need to get your personal OpenWeatherMap API key and set the variable value to it.
+//const apiKey = '&appid=<api_key>&units=metric'; //Deleted on purpose. You need to get your personal OpenWeatherMap API key and set the variable value to it.
+const apiKey = '&appid=84ff473286e612faa285c0e093aab1ea';
 const absoluteTemp = 273.15 //It will be used to convert temperature in Kevin to Celsius
 
 // Create a new date instance dynamically with JS
@@ -111,10 +112,12 @@ const getTempDateFeelingDataNUdateUI = async (url='')=>{
         //Transform into JSON
         const tempDateFeelingData = await request.json();
         //Choose last item of json and update UI element accordingly
-        document.querySelector('#date').innerHTML = "Date: " + tempDateFeelingData[tempDateFeelingData.length-1].date;
-        document.querySelector('#temp').innerHTML = "Temperature: " + tempDateFeelingData[tempDateFeelingData.length-1].temperature;
-        document.querySelector('#content').innerHTML = "Your feeling: " + tempDateFeelingData[tempDateFeelingData.length-1].userResponse;
-        
+        // document.querySelector('#date').innerHTML = "Date: " + tempDateFeelingData[tempDateFeelingData.length-1].date;
+        // document.querySelector('#temp').innerHTML = "Temperature: " + tempDateFeelingData[tempDateFeelingData.length-1].temperature;
+        // document.querySelector('#content').innerHTML = "Your feeling: " + tempDateFeelingData[tempDateFeelingData.length-1].userResponse;
+        document.querySelector('#date').innerHTML = "Date: " + tempDateFeelingData.date;
+        document.querySelector('#temp').innerHTML = "Temperature: " + tempDateFeelingData.temperature;
+        document.querySelector('#content').innerHTML = "Your feeling: " + tempDateFeelingData.userResponse;
     }catch(error){
         console.log('For some Reason, could not fishish GET request for temp, date, feeling data', error);
     }
