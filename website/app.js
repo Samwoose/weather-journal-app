@@ -3,7 +3,6 @@ const baseURL = 'https://api.openweathermap.org/data/2.5/weather?zip=';
 const countryCode = ',us'; //As of now, a user only can get the weather data in us
 //const apiKey = '&appid=<api_key>&units=metric'; //Deleted on purpose. You need to get your personal OpenWeatherMap API key and set the variable value to it.
 const apiKey = '&appid=84ff473286e612faa285c0e093aab1ea&units=metric';
-const absoluteTemp = 273.15 //It will be used to convert temperature in Kevin to Celsius
 
 // Create a new date instance dynamically with JS
 let d = new Date();
@@ -86,7 +85,7 @@ const postWeather = async (url,weatherData,userResponse,date) => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            temperature : (parseInt(weatherData.main.temp) - absoluteTemp).toFixed(2).toString() + "°C",
+            temperature : weatherData.main.temp+"°C",
             date : date,
             userResponse : userResponse}),
         }); //pay attention that the temperature from API is converted to Celsius unit. 
