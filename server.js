@@ -46,7 +46,6 @@ app.post("/addFeeling",(req,res)=>{
         date : req.body.date,
         userResponse : req.body.userResponse,
     }
-    //push the new entry to the object
-    //projectData.push(newEntry);
+    //Assign the new entry to the object
     projectData = newEntry ;
 });
