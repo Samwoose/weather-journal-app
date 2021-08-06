@@ -45,7 +45,6 @@ const zipCodeChecker = (zipCode) =>{
 
 /**
  * async GET request function from external API(OpenWeatherMap)
- *
  * @param {string} baseURL Base url to the OpenWeatherMap API.
  * @param {string} countryCode Country code of interest.
  * @param {string} apiKey Personal API key of OpenWeatherMap API.
@@ -69,7 +68,6 @@ const getWeather = async (baseURL, countryCode, apiKey, zipCode) => {
 /**
  * async POST request function.
  * It updates pojectData object in server side(which is run by server.js)
- *
  * @param {string} url endpoint that will trigger post request and save the data in server.
  * @param {Promise} weatherData Promise type and current weather data from OpenWeather API.
  * @param {string} userResponse User's feeling. It comes from users input on Web journal browser
@@ -99,7 +97,6 @@ const postWeather = async (url,weatherData,userResponse,date) => {
 /**
  * async GET request function from our server (server.js)
  * and get projectData from our server
- *
  * @param {string} url url to our server to get the projectData.
  * @return {none} none
  */
@@ -110,9 +107,6 @@ const getTempDateFeelingDataNUdateUI = async (url='')=>{
         //Transform into JSON
         const tempDateFeelingData = await request.json();
         //Choose last item of json and update UI element accordingly
-        // document.querySelector('#date').innerHTML = "Date: " + tempDateFeelingData[tempDateFeelingData.length-1].date;
-        // document.querySelector('#temp').innerHTML = "Temperature: " + tempDateFeelingData[tempDateFeelingData.length-1].temperature;
-        // document.querySelector('#content').innerHTML = "Your feeling: " + tempDateFeelingData[tempDateFeelingData.length-1].userResponse;
         document.querySelector('#date').innerHTML = "Date: " + tempDateFeelingData.date;
         document.querySelector('#temp').innerHTML = "Temperature: " + tempDateFeelingData.temperature;
         document.querySelector('#content').innerHTML = "Your feeling: " + tempDateFeelingData.userResponse;
